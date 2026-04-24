@@ -1,0 +1,143 @@
+Variables in Java
+
+    Java supports different types of variables:
+
+1. Local Variable
+2. Static Variable
+3. Non-Static Variable (Instance Variable)
+4. Reference Variable
+
+---------------------------------------------------------------------
+
+1. Non-Static Variable (Instance Variable)
+
+-> Declared inside class but outside method
+-> Should NOT use static keyword
+-> Accessed using object
+-> Each object has its own copy
+
+Example:
+    public class Student {
+        int studentAge = 20;
+
+        public static void main(String[] args) {
+            Student student1 = new Student();
+            System.out.println(student1.studentAge);
+        }
+    }
+
+Oject-Specific Behavior
+
+    public class Student {
+        int studentAge = 20;
+
+        public static void main(String[] args) {
+            Student student1 = new Student();
+            System.out.println(student1.studentAge); // 20
+
+            student1.studentAge = 25;
+            System.out.println(student1.studentAge); // 25
+
+            Student student2 = new Student();
+            System.out.println(student2.studentAge); // 20
+        }
+    }
+
+-> Note : Each object maintains its own copy of variables
+
+Default Values
+
+No need to initialize instance variables
+Java assigns default values automatically
+    public class Student {
+        int studentAge;
+
+        public static void main(String[] args) {
+            Student student1 = new Student();
+            System.out.println(student1.studentAge); // 0
+        }
+    }
+
+---------------------------------------------------------------------
+
+2. Static Variable
+
+-> Declared using static keyword inside class outside of any block/method
+-> Shared across all objects of the class
+-> Stored in class memory
+
+Access Methods:
+-> ClassName.variableName (Recommended)
+-> variableName (inside same class)
+-> object.variableName (Works but not recommended)
+
+Example:
+    public class Student {
+        static int collegeCode = 1001;
+
+        public static void main(String[] args) {
+            System.out.println(Student.collegeCode);
+            System.out.println(collegeCode);
+
+            Student student1 = new Student();
+            System.out.println(student1.collegeCode); // Not recommended
+        }
+    }
+
+---------------------------------------------------------------------
+
+3. Local Variable
+
+-> Declared inside methods
+-> Scope limited to that method only
+-> Must be initialized before use
+
+Example:
+    public class Student {
+
+        public static void main(String[] args) {
+            int studentAge = 21;
+            System.out.println(studentAge);
+        }
+    }
+
+Invalid Usage (Scope Issue)
+
+    public class Student {
+        public static void main(String[] args) {
+            int studentAge = 21;
+            Student student1 = new Student();
+            student1.display();
+        }
+
+        public void display() {
+            System.out.println(studentAge); // Error
+        }
+    }
+
+Initialization Required
+    public class Student {
+        public static void main(String[] args) {
+            int studentAge;
+            System.out.println(studentAge); // Error
+        }
+    }
+
+---------------------------------------------------------------------
+
+4. Reference Variable
+
+-> Stores object address or null
+-> Data type is class name (class type)
+
+Example:
+    public class Student {
+        public static void main(String[] args) {
+            Student student1 = null;
+            Student student2 = new Student();
+        }
+    }
+
+Important Points
+-> Reference variable type = class name
+-> Cannot access local reference variable outside method
