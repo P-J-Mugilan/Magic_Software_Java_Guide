@@ -1,0 +1,100 @@
+Methods in Java
+
+-> A method is a block of code used to perform a specific task
+
+1. void Method
+
+-> A void method does not return any value
+-> return; is optional
+-> Used only to end method execution
+
+Example:
+    public class Student {
+
+        public void displayMessage() {
+            System.out.println("Hello Student");
+            return;
+        }
+    }
+
+
+2. Non-void Method (Return Type)
+
+-> Method returns a value
+-> return value is mandatory
+
+Example:
+    public class Student {
+
+        public int getMarks() {
+            return 100;
+        }
+
+        public static void main(String[] args) {
+            Student student = new Student();
+            int marks = student.getMarks();
+            System.out.println(marks);
+        }
+    }
+
+3. return Keyword vs return Value
+
+return keyword
+    -> Used in void method
+    -> Returns control to caller
+return value
+    -> Used in non-void method
+    -> Returns value + control
+
+Unreachable Code (Important)
+    public int getMarks() {
+        return 100;
+        System.out.println("Hello"); // Error: Unreachable code 
+        // (after return statement cannot write any code)  
+    }
+
+4. Method Arguments (Parameters)
+
+-> Used to pass values to method
+-> Parameters act as local variables
+
+Example:
+    public class Student {
+
+        public void displayMarks(int marks) {
+            System.out.println(marks);
+        }
+
+        public static void main(String[] args) {
+            Student student = new Student();
+            student.displayMarks(95);
+        }
+    }
+
+Varargs (Variable Arguments)
+    public void displayNumbers(int... numbers) {
+        System.out.println(numbers[0]);
+    }
+
+5. Static Methods
+
+-> Belongs to class, not object
+-> Access using ClassName.methodName()
+
+Example:
+    public class Student {
+
+        public static int add(int a, int b) {
+            return a + b;
+        }
+
+        public static void main(String[] args) {
+            int result = Student.add(10, 20);
+            System.out.println(result);
+        }
+    }
+
+Note : 
+-> Method Signature
+-> Method name + parameters
+-> add(int a, int b)
